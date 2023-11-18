@@ -1,0 +1,9 @@
+Int Numero
+Int Cuenta
+read Numero
+read Cuenta
+write Resultado
+Numero Cuenta + Resultado =  
+12 Cuenta + Resultado =
+12 11 1 * + Resultado =
+read Resultado

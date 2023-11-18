@@ -13,7 +13,7 @@ public class Cuartetos {
     int asigna = 0;
 
     private void leerPosfija() throws FileNotFoundException {
-        File archivo = new File("src/codigointermedio/Posfija.txt");
+        File archivo = new File("src\\gramaticacuartetosgenerador\\gramatica1.txt");
         Scanner lexico = new Scanner(new FileReader(archivo));
         while (lexico.hasNext()) {
             buscar(lexico.next());
