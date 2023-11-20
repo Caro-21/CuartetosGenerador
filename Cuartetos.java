@@ -1,5 +1,4 @@
 package gramaticacuartetosgenerador;
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -21,26 +20,25 @@ public class Cuartetos {
     }
 
     private void mostrarCuarteto() {
-        System.out.println("Operador\tOperando1\tOperando2\tResultado");
+    System.out.println("Operador  Operando1   Operando2   Resultado ");
 
-        for (int i = 0; i < k; i++) {
-            String operador = cuarteto[i][0];
-            String operando1 = cuarteto[i][1].equals("") ? "_" : cuarteto[i][1];
-            String operando2 = cuarteto[i][2].equals("") ? "_" : cuarteto[i][2];
-            String resultado = cuarteto[i][3].equals("") ? "_" : cuarteto[i][3];
+    for (int i = 0; i < k; i++) {
+        String operador = cuarteto[i][0];
+        String operando1 = cuarteto[i][1].equals("") ? "_" : cuarteto[i][1];
+        String operando2 = cuarteto[i][2].equals("") ? "_" : cuarteto[i][2];
+        String resultado = cuarteto[i][3].equals("") ? "_" : cuarteto[i][3];
 
-            if (operador.equals("read")) {
-                operando1 = "_";
-                operando2 = "_";
-            }
-
-            System.out.printf("%-10s%-12s%-12s%-12s%n", operador, operando1, operando2, resultado);
-        }
+        System.out.printf("%-10s%-12s%-12s%-14s%n", operador, operando1, operando2, resultado);
     }
+}
+
+
+
+
 
     private void buscar(String lexema) {
         if ("+".equals(lexema) || "-".equals(lexema) || "*".equals(lexema)) {
-            cuarteto[k][0] = "Int";
+            cuarteto[k][0] = lexema;
             cuarteto[k][1] = "_";
             cuarteto[k][2] = "_";
             cuarteto[k][3] = "_";
@@ -48,7 +46,7 @@ public class Cuartetos {
         } else if ("=".equals(lexema)) {
             asigna = 1;
         } else if ("read".equals(lexema) || "write".equals(lexema)) {
-            cuarteto[k][0] = lexema.equals("read") ? "Int" : "write";
+            cuarteto[k][0] = lexema;
             cuarteto[k][1] = "_";
             cuarteto[k][2] = "_";
             cuarteto[k][3] = lexema.equals("read") ? "Numero" : "Resultado";
@@ -61,8 +59,8 @@ public class Cuartetos {
                     cuarteto[k][2] = "_";
                     cuarteto[k][3] = "_";
                 } else {
-                    cuarteto[k][0] = "Int";
-                    cuarteto[k][1] = "_";
+                    cuarteto[k][0] = lexema.equals("Numero") ? "Int" : "Int";
+                    cuarteto[k][1] = lexema.equals("Numero") ? "_" : "_";
                     cuarteto[k][2] = lexema;
                     cuarteto[k][3] = asigna == 1 ? cuarteto[k - 1][3] : "temp" + temporal++;
                     asigna = 0;
